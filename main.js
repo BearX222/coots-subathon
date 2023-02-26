@@ -1,6 +1,10 @@
 import './style.css';
 import './chat.css';
 import './carMinigame.css';
+import './scripts/badChat.js';
+import './scripts/chatColors.js';
+import './scripts/goodChat.js';
+import './scripts/names.js';
 import TwitchChat from './scripts/TwitchChat';
 import CarMinigame from './scripts/CarMinigame';
 
