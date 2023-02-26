@@ -23,6 +23,8 @@ document.querySelector("#exit-to-menu").addEventListener("click", ()=>{
     document.querySelector("#audio-player").src = "./assets/audio/HappySong.mp3";
     document.querySelector("#audio-player").play();
     document.querySelector("#chat").innerHTML = "";
+    document.querySelector("#global-time-counter").innerText = "00:00";
+    clearInterval(timeInterval);
     displayMenu();
 });
 
@@ -34,6 +36,7 @@ const audioClickListener = ()=>{
 document.addEventListener("mousedown", audioClickListener);
 
 let carMinigame;
+let timeInterval;
 
 function startGame(){
     document.querySelector("#menu").style.display = "none";
@@ -46,20 +49,18 @@ function startGame(){
     const twitchChat = new TwitchChat(document.querySelector("#chat"));
     
     const startTime = Date.now();
-    let elapsedTime = "00:00";
     
     // Update counters
-    setInterval(()=>{
+    timeInterval = setInterval(()=>{
         const timeNow = Date.now();
         const elapsed = new Date(timeNow - startTime);
     
         const formated = String(elapsed.getMinutes()).padStart(2, "0") + ":" + String(elapsed.getSeconds()).padStart(2, "0");
-        elapsedTime = formated;
 
         subs += subs * (0.0001 + Math.random() * 0.0199);
         viewers += viewers * (0.0005 + Math.random() * 0.0345);
     
-        document.querySelector("#global-time-counter").innerText = elapsedTime;
+        document.querySelector("#global-time-counter").innerText = formated;
         document.querySelector("#global-subs-counter").innerText = Math.floor(subs);
         document.querySelector("#global-viewers-counter").innerText = Math.floor(viewers);
     }, 1000);
@@ -84,6 +85,7 @@ function displayCredits(){
     document.querySelector("#menu").style.display = "none";
     document.querySelector("#game").style.display = "none";
     document.querySelector("#credits").style.display = "flex";
+
 }
 function displayMenu(){
     document.querySelector("#menu").style.display = "block";

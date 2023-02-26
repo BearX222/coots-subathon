@@ -171,10 +171,9 @@ export default class CarMinigame{
     gameOver(){
         clearInterval(this.itemInterval);
         clearInterval(this.pickupInterval);
-        console.log("Game over");
         const text = document.createElement("div");
         text.classList.add("game-over");
-        text.innerText = "GAME OVER!"
+        text.innerText = "GAME OVER!";
         this.wrapper.appendChild(text);
         document.querySelector("#audio-player").pause();
         this.coin.style.display = "none";
@@ -193,10 +192,6 @@ export default class CarMinigame{
             setTimeout(()=>{
                 this.spawnItem();
             }, 5000);
-
-            document.addEventListener("keypress", (e)=>{
-                this.keyHandler(e);
-            });
 
             this.itemInterval = setInterval(()=>{
                 this.updateItem();
