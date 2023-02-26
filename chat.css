@@ -1,0 +1,28 @@
+#chat{
+    background-color: #18181b;
+    color: #fff;
+    width: 20rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 100%;
+    scroll-behavior: smooth;
+    padding-bottom: 0.5rem;
+    scrollbar-width: thin;
+    border-left: 0.1rem solid #fff;
+}
+
+.message{
+    font-size: 0.7rem;
+    margin: 0 0.5rem;
+}
+.message .user{
+    color: red;
+}
+.message .message-body{
+    max-lines: 2;
+    overflow: hidden;
+    width: auto;
+}
